@@ -28,6 +28,24 @@ queue.execute() // ['foo']
 */
 /* TD Part */
 function ExecutionQueue() {
+	return {
+		_queue: [],
+		push: function(callback) {
+			this._queue.push(callback)
+		},
+		size: function() {
+			return this._queue.length
+		},
+		execute: function() {
+			var array
+			array = []  
+
+			while(this._queue.length) 
+				array.push(this._queue.pop()())
+			
+			return array.reverse()
+		}
+	}
 }
 
 /* Testing Part */

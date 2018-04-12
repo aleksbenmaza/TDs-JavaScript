@@ -20,8 +20,8 @@ TD02.php // VALIDE
 
 /* TD Part */
 function verify(fileName) {
-    var regex = /editMe/g
-    return regex.test(fileName)
+    var regex = new RegExp(/^td\d{2}/)
+    return regex.test(fileName.toLowerCase())
 }
 
 /* Testing Part */

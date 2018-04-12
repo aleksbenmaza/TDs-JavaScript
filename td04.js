@@ -14,7 +14,28 @@ a => 4
 */
 
 /* TD Part */
+
+const dictionnary = {
+	t : 7,
+	i : 1,
+	s : 5,
+	e : 3,
+	g : 6,
+	o : 0,
+	b : 8,
+	a : 4
+}
+
 function leet(input) {
+	var leeted;
+
+	leeted = "";
+
+	for(var char of input) {
+		leeted += typeof dictionnary[char] !== 'undefined' ? dictionnary[char] : char
+	}
+
+	return leeted.trim()
 }
 
 /* Testing Part */

@@ -7,7 +7,7 @@ doit faire au maximum une ligne !
 /* TD Part */
 
 function factorielle(n) { /* Une seule ligne a l'intérieur de votre fonction */
-
+	return n == 0 || n == 1 ? 1 : n * factorielle(n - 1)
 }
 
 /* Testing Part */
@@ -17,7 +17,7 @@ f = eval(String.fromCharCode(...f.split(',')))
 if (factorielle.toString().match(/\n/g).length > 2) {
     console.log('TD07 :: Failed. Too long')
 }
-for (var i = 0; i < 100; i++) {
+for (var i = 0; i < 20; i++) {
     if (f(i) !== factorielle(i)) {
         console.log('TD07 :: Failed')
         process.exit(-1)

@@ -27,7 +27,31 @@ robbie.do(1, 'Jérémie') // Retourne 'Bonjour Jérémie!'
 
 */
 
-function Robbie () {
+function Robbie() {
+    this.do = function(pid, input = null, ...inputs) {
+        var pattern
+
+        switch(pid) {
+            case 1:
+                return 'Bonjour ' + input + '!'
+            case 2:
+                return !input ? new Date : null;
+            case 3:
+                pattern = /t/g
+                return input.replace(pattern, '7')
+            case 4:
+                pattern = /\w+/g
+                return input.replace(pattern, '####')
+            case 5:
+                pattern = new RegExp(inputs[0])
+                return input.replace(pattern, inputs[1])
+            case 6:
+                pattern = /date/
+                return input.replace(pattern, new Date)
+            default:
+                throw new Error
+        }
+    }
 }
 
 /* TD Part */
@@ -41,13 +65,13 @@ function test() {
         return false
     } else if (!robbie.do(2)) {
         return false
-    } else if (robbie.do(3, text) !== 'Je suis un 7es7') {
+    } else if (robbie.do(3, text) !== 'Je suis un 7es7') { 
         return false
-    } else if (robbie.do(4, text) !== '#### #### #### ####' && robbie.do(4, text) !== '## #### ## ####') {
+    } else if (robbie.do(4, text) !== '#### #### #### ####' && robbie.do(4, text) !== '## #### ## ####') { 
         return false
     } else if (robbie.do(5, text, 'test', 'toast') !== 'Je suis un toast') {
         return false
-    } else if (!robbie.do(6, text)) {
+    } else if (!robbie.do(6, text)) { 
         return false
     }
     return true

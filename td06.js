@@ -17,13 +17,28 @@ Source : https://fr.wikipedia.org/wiki/Factorielle
 /* TD Part */
 
 function factorielle() {
+    var n
+    var resultat
+
+    n = arguments[0]
+
+    if(n < 0)
+        throw new Error
+
+    if(n == 1 || n == 0)
+        return 1
+
+    for(resultat = n; n > 2; resultat *= --n) {}
+
+    return resultat
 }
+
 
 /* Testing Part */
 var f = '110,32,61,62,32,110,32,60,32,49,32,63,32,49,32,58,32,102,40,110,45,49,41,42,110'
 f = eval(String.fromCharCode(...f.split(',')))
 
-for (var i = 0; i < 100; i++) {
+for (var i = 0; i < 20; i++) {
     if (f(i) !== factorielle(i)) {
         console.log('TD06 :: Failed')
         process.exit(-1)

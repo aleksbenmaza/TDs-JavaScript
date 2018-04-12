@@ -13,6 +13,35 @@ Exemple :
 
 /* TD Part */
 function parseCSV(string) {
+	var lines
+	var attributes
+	var data
+	var object
+	var i 
+	var parsed
+
+	lines = string.split('\n')
+	attributes = lines[0].split(';')
+
+	Array.from(attributes).forEach(function(element, index) {
+		attributes[index] = element.toLowerCase()
+	})
+	
+	parsed = []
+
+	for(var data of lines.slice(1, lines.length)) {
+		object = {}
+
+		data = data.split(';')
+
+		for(i = 0; i < attributes.length; ++i) {
+			object[attributes[i]] = isNaN(data[i]) ? data[i] : parseInt(data[i])
+		}
+
+		parsed.push(object)
+	}
+
+	return parsed
 }
 
 /* Testing Part */
